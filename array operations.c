@@ -63,7 +63,6 @@ void main() {
     int arr[SIZE], n = 0, choice, value, pos,e=0;
 
     while (e!=4) {
-        printf("\nMenu:\n");
         printf("1. Insert\n2. Delete\n3. Search\n4. Sort\n5. Display\n6. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
