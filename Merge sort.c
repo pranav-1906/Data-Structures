@@ -1,16 +1,16 @@
 #include <stdio.h>
 
-void merge(int arr[], int left, int mid, int right) {
-    int n1 = mid - left + 1;
-    int n2 = right - mid;
+void merge(int arr[], int low, int mid, int high) {
+    int n1 = mid - low + 1;
+    int n2 = high - mid;
     int L[n1], R[n2];
 
     for (int i = 0; i < n1; i++)
-        L[i] = arr[left + i];
+        L[i] = arr[low + i];
     for (int j = 0; j < n2; j++)
         R[j] = arr[mid + 1 + j];
 
-    int i = 0, j = 0, k = left;
+    int i = 0, j = 0, k = low;
     while (i < n1 && j < n2) {
         if (L[i] <= R[j]) {
             arr[k] = L[i];
@@ -35,12 +35,12 @@ void merge(int arr[], int left, int mid, int right) {
     }
 }
 
-void mergeSort(int arr[], int left, int right) {
-    if (left < right) {
-        int mid = left + (right - left) / 2;
-        mergeSort(arr, left, mid);
-        mergeSort(arr, mid + 1, right);
-        merge(arr, left, mid, right);
+void mergeSort(int arr[], int low, int high) {
+    if (low < high) {
+        int mid = low + (high - low) / 2;
+        mergeSort(arr, low, mid);
+        mergeSort(arr, mid + 1, high);
+        merge(arr, low, mid, high);
     }
 }
 
