@@ -1,47 +1,41 @@
-#include <stdio.h>
+#include<stdio.h>
+int a[20][20],stack[20],visited[20], n;
 
-#define MAX 10
-
-int graph[MAX][MAX];
-int visited[MAX];
-
-void dfs(int v, int n) {
-    printf("%d ", v);
-    visited[v] = 1;
-
-    for (int i = 0; i < n; i++) {
-        if (graph[v][i] == 1 && !visited[i]) {
-            dfs(i, n);
-        }
+void dfs(int v)
+{
+    int i;
+    for(i=0;i<n;i++)
+    {
+      if(a[v][i]!=0 && visited[i]==0)
+      {
+          visited[i]=1;
+          printf("%d\t", i);
+          dfs(i);
+       }
     }
 }
 
-int main() {
-    int n, edges, u, v;
-
-    printf("Enter the number of vertices: ");
+int main() 
+{
+    int i,j, v;
+    printf("enter the no of vertices:");
     scanf("%d", &n);
-
-    printf("Enter the number of edges: ");
-    scanf("%d", &edges);
-
-    for (int i = 0; i < n; i++) {
-        visited[i] = 0;
-        for (int j = 0; j < n; j++) {
-            graph[i][j] = 0;
+    for(i=0;i<n;i++)
+    {
+        visited[i]=0;
+    }
+    printf("\nEnter graph data in matrix form:");
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            scanf("%d", &a[i][j]);
         }
     }
-
-    printf("Enter the edges (u v):\n");
-    for (int i = 0; i < edges; i++) {
-        scanf("%d %d", &u, &v);
-        graph[u][v] = 1;
-        graph[v][u] = 1;
-    }
-
-    printf("DFS traversal starting from vertex 0: ");
-    dfs(0, n);
-    printf("\n");
-
-    return 0;
+    printf("\nEnter the starting vertex:");
+    scanf("%d", &v);
+    printf("DFS :");
+    visited[v]=1;
+    printf("%d\t", v);
+    dfs(v);
 }
