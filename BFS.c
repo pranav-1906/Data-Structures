@@ -6,7 +6,7 @@ void bfs(int v)
     int i;
     for(i=0;i<n;i++)
     {
-      if(a[v][i]!=0 && visited[i]==0)//adjacent to v and not visited
+      if(a[v][i]!=0 && visited[i]==0)
         {
             rear=rear+1;
             q[rear]=i;
